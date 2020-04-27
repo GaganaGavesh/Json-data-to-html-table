@@ -1,0 +1,39 @@
+<html>
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+      
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"> 
+
+    </head>
+    <body>
+        <table id="emp_table">
+            
+                <tr>
+                    <th>Employee ID</th>
+                    <th>Employee Name</th>
+                    <th>Employee Age</th>
+                    <th>Employee Salary</th>
+                </tr>
+            </tbody>
+        </table>
+
+    </body>
+
+</html>
+<script>
+    $(document).ready(function(){
+        $.getJSON('http://dummy.restapiexample.com/api/v1/employees',function(data){
+            var emp_data ='';
+            $.each(data,function(key,value){
+                emp_data +='<tr>';
+                emp_data +='<td>'+value.id+'</td>';
+                emp_data +='<td>'+value.employee_name+'</td>';
+                emp_data +='<td>'+value.employee_age+'</td>';
+                emp_data +='<td>'+value.employee_salary+'</td>';
+                emp_data +='</tr>';
+            });
+            $('#emp_table').append(emp_data);
+        });
+    });
+</script>
