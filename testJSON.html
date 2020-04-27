@@ -1,0 +1,54 @@
+<html>
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script
+  src="https://code.jquery.com/jquery-3.5.0.js"
+  integrity="sha256-r/AaFHrszJtwpe+tHyNi/XCfMxYpbsRg2Uqn0x3s2zc="
+  crossorigin="anonymous"></script>
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"> 
+
+    </head>
+    <body>
+        <div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Employee ID</th>
+                        <th>Employee Name</th>
+                        <th>Employee Age</th>
+                        <th>Employee Salary</th>
+                    </tr>
+                </thead>
+                <tbody id="data">
+                 <!-- table body will be added after the for loop,with the innerHTML  -->
+                </tbody>
+            </table>
+        </div>
+        
+        <script>
+           
+            fetch("http://dummy.restapiexample.com/api/v1/employees")
+                .then(function(res){
+                    return res.json();
+                })
+                .then(function(data){
+
+                    var temp = "";
+
+                    for(var i = 0; i<data.data.length; i++)
+                    {
+                        if(data.data[i].employee_age=='61')
+                        {
+                              temp += "<tr>";
+                              temp += "<td>"+data.data[i].id+"</td>";
+                              temp += "<td>"+data.data[i].employee_name+"</td>";
+                              temp += "<td>"+data.data[i].employee_age+"</td>";
+                              temp += "<td>"+data.data[i].employee_salary+"</td></tr>"; 
+                        }
+                    }
+                        document.getElementById("data").innerHTML = temp;
+                });     
+        </script>
+    </body>
+</html>
