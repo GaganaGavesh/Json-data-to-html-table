@@ -27,7 +27,7 @@
         </div>
         
         <script>
-           
+        //    fetch function get the link that gives the json data
             fetch("http://dummy.restapiexample.com/api/v1/employees")
                 .then(function(res){
                     return res.json();
@@ -38,16 +38,18 @@
 
                     for(var i = 0; i<data.data.length; i++)
                     {
-                        if(data.data[i].employee_age=='61')
-                        {
+                        //if(data.data[i].employee_age=='61')
+                        //{
                               temp += "<tr>";
                               temp += "<td>"+data.data[i].id+"</td>";
                               temp += "<td>"+data.data[i].employee_name+"</td>";
                               temp += "<td>"+data.data[i].employee_age+"</td>";
                               temp += "<td>"+data.data[i].employee_salary+"</td></tr>"; 
-                        }
+                        //}
                     }
                         document.getElementById("data").innerHTML = temp;
+
+                        // temp variable will have a long html code which make the final table
                 });     
         </script>
     </body>
